@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3tyyy0bym3hf"]
+
+[ext_resource type="Script" uid="uid://cd8o0ex6488wf" path="res://Scenes/!Map/map_1.gd" id="1_iktnx"]
+[ext_resource type="PackedScene" uid="uid://ijxb6rq0a5mk" path="res://Scenes/background/Surface/background.tscn" id="3_vtgae"]
+[ext_resource type="PackedScene" uid="uid://df5ffbinpo4a6" path="res://Scenes/!Map/Tilemap/tile_map_layer.tscn" id="3_wu07h"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vtgae"]
+noise_type = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wu07h"]
+noise_type = 3
+frequency = 0.2
+domain_warp_amplitude = 10.0
+domain_warp_frequency = 0.1
+domain_warp_fractal_octaves = 10
+
+[node name="map1" type="Node2D"]
+script = ExtResource("1_iktnx")
+surface_noise = SubResource("FastNoiseLite_vtgae")
+cave_noise = SubResource("FastNoiseLite_wu07h")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Players"]
+offset = Vector2(0, 500)
+enabled = false
+zoom = Vector2(0.5, 0.5)
+
+[node name="Background" parent="." instance=ExtResource("3_vtgae")]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="TileMapLayer" parent="World" instance=ExtResource("3_wu07h")]
+
+[node name="Breakables" type="Node2D" parent="World"]

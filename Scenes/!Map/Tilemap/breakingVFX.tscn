@@ -1,0 +1,156 @@
+[gd_scene load_steps=21 format=3 uid="uid://cxoojn2rejw30"]
+
+[ext_resource type="Texture2D" uid="uid://dl4p8fy8r314x" path="res://Sprites/Tiles/SmallSmoke1.png" id="1_xg4dh"]
+[ext_resource type="Texture2D" uid="uid://drqibaj1jp1ls" path="res://Sprites/Tiles/SmallSmoke2.png" id="2_4bwt5"]
+[ext_resource type="Script" uid="uid://4ig252r71r2w" path="res://Scenes/!Map/Tilemap/breaking_dust.gd" id="3_3cwvv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a47kr"]
+atlas = ExtResource("1_xg4dh")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3skgg"]
+atlas = ExtResource("1_xg4dh")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y0qw"]
+atlas = ExtResource("1_xg4dh")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpcqq"]
+atlas = ExtResource("1_xg4dh")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0tid"]
+atlas = ExtResource("1_xg4dh")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0n0e"]
+atlas = ExtResource("1_xg4dh")
+region = Rect2(0, 40, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeeue"]
+atlas = ExtResource("2_4bwt5")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g48ev"]
+atlas = ExtResource("2_4bwt5")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dym0r"]
+atlas = ExtResource("2_4bwt5")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gpul"]
+atlas = ExtResource("2_4bwt5")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0416h"]
+atlas = ExtResource("2_4bwt5")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuxy0"]
+atlas = ExtResource("2_4bwt5")
+region = Rect2(0, 40, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a47kr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a47kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3skgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y0qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpcqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0tid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0n0e")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Smoke1",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeeue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g48ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dym0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gpul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0416h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuxy0")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Smoke2",
+"speed": 20.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d2odd"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_d2odd"]
+offsets = PackedFloat32Array(0.821229, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sued5"]
+gradient = SubResource("Gradient_d2odd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qo4vy"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_sued5")
+anim_offset_max = 1.0
+
+[node name="BreakingVFX" type="AnimatedSprite2D"]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_a47kr")
+animation = &"Smoke2"
+frame = 6
+frame_progress = 1.0
+script = ExtResource("3_3cwvv")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.960351, 0.960351, 0.960351, 1)
+material = SubResource("CanvasItemMaterial_d2odd")
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qo4vy")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

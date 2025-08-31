@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://byk1ok6vr8u1"]
+
+[ext_resource type="Script" uid="uid://eyklrbfqdv0r" path="res://Scenes/!Player/player.gd" id="1_a3d8c"]
+[ext_resource type="PackedScene" uid="uid://bgroidwx25diq" path="res://Scenes/!Player/player_sprite.tscn" id="2_xpcdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtuoh"]
+size = Vector2(8, 11.9)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_a3d8c")
+
+[node name="PlayerSprite" parent="." instance=ExtResource("2_xpcdj")]
+z_index = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(0, 1.95)
+shape = SubResource("RectangleShape2D_mtuoh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -10)
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+editor_draw_drag_margin = true

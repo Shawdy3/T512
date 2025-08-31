@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://co711en18quay"]
+
+[ext_resource type="PackedScene" uid="uid://bhhgj6aor1pbi" path="res://Scenes/Menu/Editor/character_editor.tscn" id="1_7fvlq"]
+[ext_resource type="Script" uid="uid://cn0h085511du1" path="res://Scenes/Menu/Editor/character_creator.gd" id="1_xm1k8"]
+
+[node name="character_creator" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -193.0
+offset_right = 210.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+script = ExtResource("1_xm1k8")
+
+[node name="Creator" type="Control" parent="."]
+custom_minimum_size = Vector2(420, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="Panel" type="Panel" parent="Creator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Creator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="Creator/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+placeholder_text = "Имя персонажа"
+alignment = 1
+max_length = 24
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="CreateCharacter" type="Button" parent="Creator/HBoxContainer"]
+layout_mode = 2
+text = "Создать"
+
+[node name="Character_Editor" parent="." instance=ExtResource("1_7fvlq")]
+layout_mode = 2
+size_flags_vertical = 10
+
+[connection signal="text_changed" from="Creator/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="Creator/HBoxContainer/CreateCharacter" to="." method="_on_create_character_pressed"]

@@ -1,0 +1,268 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhhgj6aor1pbi"]
+
+[ext_resource type="Script" uid="uid://4crbfd7270ie" path="res://Scenes/Menu/character_editor.gd" id="1_ru5g3"]
+[ext_resource type="PackedScene" uid="uid://bgroidwx25diq" path="res://Scenes/Player/player_sprite.tscn" id="1_tyyvx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru5g3"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Character_Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ru5g3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -170.0
+offset_right = 210.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Redactor" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainButtons" type="HBoxContainer" parent="Redactor"]
+layout_mode = 2
+
+[node name="CharacterPanel" type="Panel" parent="Redactor/MainButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="PlayerSprite" parent="Redactor/MainButtons/CharacterPanel" instance=ExtResource("1_tyyvx")]
+position = Vector2(50, 50)
+scale = Vector2(5, 5)
+
+[node name="CustomizationButtons" type="VBoxContainer" parent="Redactor/MainButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hair&Eyes" type="HBoxContainer" parent="Redactor/MainButtons/CustomizationButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrevHair" type="Button" parent="Redactor/MainButtons/CustomizationButtons/Hair&Eyes"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "<"
+
+[node name="HairColor" type="Panel" parent="Redactor/MainButtons/CustomizationButtons/Hair&Eyes"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ru5g3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/HairColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Волосы"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextHair" type="Button" parent="Redactor/MainButtons/CustomizationButtons/Hair&Eyes"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = ">"
+
+[node name="PrevEyes" type="Button" parent="Redactor/MainButtons/CustomizationButtons/Hair&Eyes"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "<"
+
+[node name="EyeColor" type="Panel" parent="Redactor/MainButtons/CustomizationButtons/Hair&Eyes"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ru5g3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/EyeColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Глаза"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextEyes" type="Button" parent="Redactor/MainButtons/CustomizationButtons/Hair&Eyes"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = ">"
+
+[node name="SkinColor" type="Panel" parent="Redactor/MainButtons/CustomizationButtons"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ru5g3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Redactor/MainButtons/CustomizationButtons/SkinColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Цвет кожи"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Style" type="HBoxContainer" parent="Redactor/MainButtons/CustomizationButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrevStyle" type="Button" parent="Redactor/MainButtons/CustomizationButtons/Style"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "<"
+
+[node name="Style1Color" type="Panel" parent="Redactor/MainButtons/CustomizationButtons/Style"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ru5g3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Redactor/MainButtons/CustomizationButtons/Style/Style1Color"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Одежда 1"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Style2Color" type="Panel" parent="Redactor/MainButtons/CustomizationButtons/Style"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ru5g3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Redactor/MainButtons/CustomizationButtons/Style/Style2Color"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Одежда 2"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextStyle" type="Button" parent="Redactor/MainButtons/CustomizationButtons/Style"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = ">"
+
+[node name="OtherButtons" type="HBoxContainer" parent="Redactor"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="Redactor/OtherButtons"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Назад"
+
+[node name="RandButton" type="Button" parent="Redactor/OtherButtons"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Случайный выбор"
+
+[node name="ColorPicker" type="ColorPicker" parent="Redactor"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 1.3
+color = Color(1, 0, 0, 1)
+edit_alpha = false
+color_mode = 1
+picker_shape = 4
+sampler_visible = false
+color_modes_visible = false
+presets_visible = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_top = -77.0
+offset_right = 57.0
+offset_bottom = -30.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="mouse_entered" from="Redactor/MainButtons/CharacterPanel" to="." method="_on_character_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Redactor/MainButtons/CharacterPanel" to="." method="_on_character_panel_mouse_exited"]
+[connection signal="pressed" from="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/PrevHair" to="." method="_on_prev_hair_pressed"]
+[connection signal="focus_entered" from="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/HairColor" to="." method="_on_hair_color_focus_entered"]
+[connection signal="focus_exited" from="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/HairColor" to="." method="_on_hair_color_focus_exited"]
+[connection signal="pressed" from="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/NextHair" to="." method="_on_next_hair_pressed"]
+[connection signal="pressed" from="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/PrevEyes" to="." method="_on_prev_eyes_pressed"]
+[connection signal="focus_entered" from="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/EyeColor" to="." method="_on_eye_color_focus_entered"]
+[connection signal="focus_exited" from="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/EyeColor" to="." method="_on_eye_color_focus_exited"]
+[connection signal="pressed" from="Redactor/MainButtons/CustomizationButtons/Hair&Eyes/NextEyes" to="." method="_on_next_eyes_pressed"]
+[connection signal="focus_entered" from="Redactor/MainButtons/CustomizationButtons/SkinColor" to="." method="_on_skin_color_focus_entered"]
+[connection signal="focus_exited" from="Redactor/MainButtons/CustomizationButtons/SkinColor" to="." method="_on_skin_color_focus_exited"]
+[connection signal="pressed" from="Redactor/MainButtons/CustomizationButtons/Style/PrevStyle" to="." method="_on_prev_style_pressed"]
+[connection signal="focus_entered" from="Redactor/MainButtons/CustomizationButtons/Style/Style1Color" to="." method="_on_style_1_color_focus_entered"]
+[connection signal="focus_exited" from="Redactor/MainButtons/CustomizationButtons/Style/Style1Color" to="." method="_on_style_1_color_focus_exited"]
+[connection signal="focus_entered" from="Redactor/MainButtons/CustomizationButtons/Style/Style2Color" to="." method="_on_style_2_color_focus_entered"]
+[connection signal="focus_exited" from="Redactor/MainButtons/CustomizationButtons/Style/Style2Color" to="." method="_on_style_2_color_focus_exited"]
+[connection signal="pressed" from="Redactor/MainButtons/CustomizationButtons/Style/NextStyle" to="." method="_on_next_style_pressed"]
+[connection signal="pressed" from="Redactor/OtherButtons/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Redactor/OtherButtons/RandButton" to="." method="_on_rand_button_pressed"]
+[connection signal="color_changed" from="Redactor/ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
